@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjetTutoreController extends AbstractController
 {
     /**
-     * @Route("/projet/tutore", name="projet_tutore")
+     * @Route("/projet_tutore", name="projet_tutore")
      */
     public function index(): Response
     {
@@ -23,7 +23,7 @@ class ProjetTutoreController extends AbstractController
      */
     public function accueil() : Response
     {
-        return $this->render('projet_turore/accueil.html.twig',[
+        return $this->render('projet_tutore/accueil.html.twig',[
             'titre' => 'Bienvenue sur ProjetTutore'
         ]);
     }
