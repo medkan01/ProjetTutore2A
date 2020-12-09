@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -44,7 +45,12 @@ class Article
 
     public function setTitle(string $title): self
     {
-        $this->title = $title;
+        if((trim($title) == '') or (trim($title) == null))
+        {
+            throw new Exception("Le titre saisi est vide");
+        } else {
+            $this->title = $title;
+        }
 
         return $this;
     }
@@ -56,7 +62,12 @@ class Article
 
     public function setUser(string $user): self
     {
-        $this->user = $user;
+        if((trim($user) == '') or (trim($user) == null))
+        {
+            throw new Exception('L\'utilisateur saisi est vide');
+        } else {
+            $this->user = $user;
+        }
 
         return $this;
     }
@@ -68,7 +79,12 @@ class Article
 
     public function setContent(string $content): self
     {
-        $this->content = $content;
+        if((trim($content) == '') or (trim($content) == null))
+        {
+            throw new Exception('Le contenu est vide');
+        } else {
+            $this->content = $content;
+        }
 
         return $this;
     }
