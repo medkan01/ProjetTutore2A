@@ -29,7 +29,7 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="simple_array")
      */
     private $roles = [];
 

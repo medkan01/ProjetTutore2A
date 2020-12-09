@@ -12,13 +12,6 @@ class UserController extends AbstractController
     /**
      * @Route("/user", name="user")
      */
-    public function index(): Response
-    {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
     public function createUser(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -26,7 +19,7 @@ class UserController extends AbstractController
         $user = new User();
         $user   ->setEmail('john@doe.fr')
                 ->setPassword('password')
-                ->setRoles(['PDG'])
+                ->setRoles(['Gestion du personnel', 'Gestion de la finance'])
                 ->setName('John Doe')
                 ->setUsername('john doe');
 
