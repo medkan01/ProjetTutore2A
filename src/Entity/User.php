@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -28,7 +29,7 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="simple_array")
      */
     private $roles = [];
 
@@ -54,7 +55,12 @@ class User
 
     public function setEmail(string $email): self
     {
-        $this->email = $email;
+        if ((trim($email) == null) or (trim($email) == ''))
+        {
+            throw new Exception("L'adresse email saisie est vide");
+        } else {
+            $this->email = trim($email);
+        }
 
         return $this;
     }
@@ -66,7 +72,12 @@ class User
 
     public function setPassword(string $password): self
     {
-        $this->password = $password;
+        if ((trim($password) == null) or (trim($password) == ''))
+        {
+            throw new Exception("Le mot de passe saisi est vide");
+        } else {
+            $this->password = trim($password);
+        }
 
         return $this;
     }
@@ -78,7 +89,18 @@ class User
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
+        if($roles == []){
+            throw new Exception("Aucun role saisi");
+        } else {
+            for($i = 0; $i < sizeof($roles); $i++){
+                if($roles[$i] == '')
+                {
+                    throw new Exception("Un ou plusieurs roles saisis sont vides");
+                }
+            }
+            $this->roles = $roles;
+        }
+        
 
         return $this;
     }
@@ -90,7 +112,12 @@ class User
 
     public function setName(string $name): self
     {
-        $this->name = $name;
+        if((trim($name) == '') or (trim($name) == null))
+        {
+            throw new Exception("Le nom saisi est vide");
+        } else {
+            $this->name = $name;
+        }
 
         return $this;
     }
@@ -102,7 +129,12 @@ class User
 
     public function setUsername(string $username): self
     {
-        $this->username = $username;
+        if((trim($username) == '') or (trim($username) == null))
+        {
+            throw new Exception("Le nom d'utilisateur saisi est vide");
+        } else {
+            $this->username = $username;
+        }
 
         return $this;
     }

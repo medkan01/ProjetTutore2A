@@ -2,11 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" media="screen and (min-width:721px)" href="css/styleTest.css" />
+	    <link rel="stylesheet" media="screen and (max-width:720px)" href="css/mobileTest.css" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        {% include 'header.html.twig' %}
         {% block body %}{% endblock %}
+        {% include 'footer.html.twig' %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
