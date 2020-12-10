@@ -15,7 +15,7 @@ class UserController extends AbstractController
     public function createUser(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-
+        
         $user = new User();
         $user   ->setEmail('john@doe.fr')
                 ->setPassword('password')
@@ -24,7 +24,6 @@ class UserController extends AbstractController
                 ->setUsername('john doe');
 
         $entityManager->persist($user);
-        echo $user->getEmail();
         $entityManager->flush();
 
         return new Response('Saved new user with id '.$user->getId());
