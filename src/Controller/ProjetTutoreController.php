@@ -26,5 +26,5 @@ class ProjetTutoreController extends AbstractController
         return $this->render('projet_tutore/accueil.html.twig',[
             'titre' => 'Bienvenue sur ProjetTutore'
         ]);
-    } //test pull request
+    }
 }
