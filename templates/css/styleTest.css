@@ -1,0 +1,61 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	text-align: center;
+}
+
+.wrapper{
+	width: 1170px;
+	margin: 0 auto;
+}
+
+header{
+	height: 100px;
+	background: #191919;
+	width: 100%;
+	z-index: 12;
+}
+
+.logo{
+	width: 30%;
+	float: left;
+	line-height: 100px;
+}
+
+.logo a{
+	text-decoration: none;
+	font-size: 30px;
+	font-family: tahoma;
+	color: #FFF;
+	letter-spacing: 2px;
+}
+
+.wrapper nav{
+	float: right;
+	line-height: 100px;
+}
+
+.wrapper nav a{
+	text-decoration: none;
+	font-family: tahoma;
+	letter-spacing: 1px;
+	font-size: 20px;
+	margin: 0 10px;
+	color: #FFF;
+}
+
+.footer{
+	background-color: #191919;
+	color: rgba(255,255,255,0.43);
+	font-size: 5px;
+	font-family: arial;
+	padding-top : 9px;
+	height: 20px;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+}
