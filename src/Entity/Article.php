@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Exception;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -19,19 +18,24 @@ class Article
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=100)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="integer")
      */
-    private $user;
+    private $idUser;
 
     /**
      * @ORM\Column(type="text")
      */
     private $content;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -45,29 +49,19 @@ class Article
 
     public function setTitle(string $title): self
     {
-        if((trim($title) == '') or (trim($title) == null))
-        {
-            throw new Exception("Le titre saisi est vide");
-        } else {
-            $this->title = $title;
-        }
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getUser(): ?string
+    public function getIdUser(): ?int
     {
-        return $this->user;
+        return $this->idUser;
     }
 
-    public function setUser(string $user): self
+    public function setIdUser(int $idUser): self
     {
-        if((trim($user) == '') or (trim($user) == null))
-        {
-            throw new Exception('L\'utilisateur saisi est vide');
-        } else {
-            $this->user = $user;
-        }
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -79,12 +73,19 @@ class Article
 
     public function setContent(string $content): self
     {
-        if((trim($content) == '') or (trim($content) == null))
-        {
-            throw new Exception('Le contenu est vide');
-        } else {
-            $this->content = $content;
-        }
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
