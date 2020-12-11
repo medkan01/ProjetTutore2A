@@ -9,23 +9,38 @@ use App\Entity\User;
 
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/user", name="user")
-     */
-    public function createUser(): Response
+    public function createUser(User $user): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-        
-        $user = new User();
-        $user   ->setEmail('john@doe.fr')
-                ->setPassword('password')
-                ->setRoles(['Gestion du personnel', 'Gestion de la finance'])
-                ->setName('John Doe')
-                ->setUsername('john doe');
 
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return new Response('Saved new user with id '.$user->getId());
+        return new Response('Nouvel utilisateur créé avec l\'id: '.$user->getId());
+    }
+
+    public function deleteUser(User $user): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return new Response('Utilisateur supprimé avec succés !');
+    }
+
+    public function updateUser(int $id, User $newUser): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $entityManager->getRepository(User::class)->find($id);
+
+        $user->setEmail($newUser->getEmail());
+        $user->setPassword($newUser->getPassword());
+        $user->setRoles($newUser->getRoles());
+        $user->setName($newUser->getName());
+        $user->setUsername($newUser->getUsername());
+        $entityManager->flush();
+
+        return new Response('Utilisateur modifié avec succés !');
     }
 }
