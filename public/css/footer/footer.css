@@ -1,0 +1,17 @@
+.footer{
+	background-color: #191919;
+	color: white;
+	font-size: 7px;
+	font-family: arial;
+	height: 20px;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+    left: 0px;
+    padding: 7px;
+}
+
+.footer a{
+    color : white;
+    text-decoration: none;
+}
