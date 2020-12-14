@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css//header/header.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/base.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/footer/footer.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
