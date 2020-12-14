@@ -2,15 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" media="screen and (min-width:721px)" href="css/styleTest.css" />
-	    <link rel="stylesheet" media="screen and (max-width:720px)" href="css/mobileTest.css" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/base.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% include 'header.html.twig' %}
+        {% include 'header/header.html.twig' %}
         {% block body %}{% endblock %}
-        {% include 'footer.html.twig' %}
+        {% include 'footer/footer.html.twig' %}
 
         {% block javascripts %}{% endblock %}
     </body>
