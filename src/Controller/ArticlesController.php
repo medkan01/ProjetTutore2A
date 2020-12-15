@@ -17,7 +17,7 @@ class ArticlesController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Article::class);
         $articles = $repo->findAll();
 
-        return $this->render('articles/index.html.twig', [
+        return $this->render('articles/articles.html.twig', [
             'controller_name' => 'ArticlesController',
             'articles' => $articles
         ]);
