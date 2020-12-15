@@ -17,9 +17,6 @@ class NewArticleController extends AbstractController
     public function createArticle(Request $request): Response
     {
         $article = new Article();
-        $article->setTitle("Titre..");
-        $article->setContent("Ecrire le contenu de l'article..");
-        $article->setIdUser(1);
         $article->setCreatedAt(new \DateTime('now'));
 
         $form = $this->createForm(ArticleType::class, $article);
