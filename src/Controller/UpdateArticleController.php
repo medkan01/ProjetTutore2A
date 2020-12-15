@@ -10,23 +10,17 @@ use App\Entity\Article;
 class UpdateArticleController extends AbstractController
 {
     /**
-     * @Route("/article/update", name="update")
+     * @Route("/articles/update", name="update")
      */
     public function index(): Response
     {
-        return $this->render('articles/update/updateArticle.html.twig', [
-            'controller_name' => 'UpdateArticleController',
+        $repo = $this->getDoctrine()->getRepository(Article::class);
+        $articles = $repo->findAll();
+
+        return $this->render('articles/update/listeUpdateArticle.html.twig', [
+            'controller_name' => 'ArticlesController',
+            'articles' => $articles
         ]);
     }
-    public function updateArticle(int $id, Article $newArticle): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $article = $entityManager->getRepository(User::class)->find($id);
-        $article->setTitle($newArticle->getTitle());
-        $article->setIdUser($newArticle->getIdUser());
-        $article->setContent($newArticle->getContent());
-        $article->setCreatedAt($newArticle->getCreatedAt());
-        $entityManager->flush();
-        return new Response('Article modifié avec succés !');
-    }
+
 }

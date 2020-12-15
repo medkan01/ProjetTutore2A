@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UpdateArticleController!{% endblock %}
+
+{% block body %}
+
+<table>
+{% for article in articles %}
+        <tr>
+            <td><div class="titreArticle"><h2>{{article.title}}</h2></div></td>
+            <td><div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div></td>
+            <td><a href="/articles/update">Modifier</a></td>
+        </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
