@@ -3,27 +3,29 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Form\Type\ArticleType;
 
 class NewArticleController extends AbstractController
 {
     /**
-     * @Route("/article/insert", name="insert")
+     * @Route("/articles/insert", name="insert")
      */
-    public function index(): Response
+    public function createArticle(Request $request): Response
     {
-        return $this->render('insert/insertArticle.html.twig', [
-            'controller_name' => 'NewArticleController',
-        ]);
-    }
+        $article = new Article();
+        $article->setTitle("Titre..");
+        $article->setContent("Ecrire le contenu de l'article..");
+        $article->setIdUser(1);
+        $article->setCreatedAt(new \DateTime('now'));
 
-    public function createArticle(Article $article): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($article);
-        $entityManager->flush();
-        return new Response('Nouvel article créé avec l\'id: '.$article->getId());
+        $form = $this->createForm(ArticleType::class, $article);
+
+        return $this->render('articles/insert/insertArticle.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

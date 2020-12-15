@@ -14,7 +14,7 @@ class DeleteArticleController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('delete/deleteArticle.html.twig', [
+        return $this->render('articles/delete/deleteArticle.html.twig', [
             'controller_name' => 'DeleteArticleController',
         ]);
     }

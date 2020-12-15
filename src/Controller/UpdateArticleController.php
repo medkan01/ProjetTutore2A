@@ -14,7 +14,7 @@ class UpdateArticleController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('update/updateArticle.html.twig', [
+        return $this->render('articles/update/updateArticle.html.twig', [
             'controller_name' => 'UpdateArticleController',
         ]);
     }
