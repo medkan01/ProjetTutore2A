@@ -3,7 +3,15 @@
 {% block title %}Hello UpdateArticleController!{% endblock %}
 
 {% block body %}
-    <div id='formUpdateArticle'>
-        {{ form(form) }}
-    </div>
+
+<table>
+{% for article in articles %}
+        <tr>
+            <td><div class="titreArticle"><h2>{{article.title}}</h2></div></td>
+            <td><div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div></td>
+            <td><a href="{{ path('article_delete',{'id': article.id}) }}">Modifier</a></td>
+        </tr>
+{% endfor %}
+</table>
+
 {% endblock %}
