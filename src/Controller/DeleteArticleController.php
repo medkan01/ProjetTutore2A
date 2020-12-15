@@ -18,7 +18,6 @@ class DeleteArticleController extends AbstractController
         $articles = $repo->findAll();
 
         return $this->render('articles/delete/deleteArticle.html.twig',[
-            'titre' => 'Bienvenue sur ProjetTutore',
             'articles' => $articles
         ]);
     }
