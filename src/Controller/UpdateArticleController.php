@@ -31,7 +31,7 @@ class UpdateArticleController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
         
-        return $this->render('articles/insert/insertArticle.html.twig', [
+        return $this->render('articles/update/updateArticle.html.twig', [
             'form' => $form->createView(),
         ]);
     }
