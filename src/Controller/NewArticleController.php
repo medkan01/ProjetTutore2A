@@ -32,7 +32,7 @@ class NewArticleController extends AbstractController
         }
         
         return $this->render('articles/insert/insertArticle.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 }
