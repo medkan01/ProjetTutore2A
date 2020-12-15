@@ -10,11 +10,11 @@ use App\Entity\Article;
 class DeleteArticleController extends AbstractController
 {
     /**
-     * @Route("/article/delete", name="delete_article")
+     * @Route("/article/delete", name="delete")
      */
     public function index(): Response
     {
-        return $this->render('delete_article/index.html.twig', [
+        return $this->render('delete/deleteArticle.html.twig', [
             'controller_name' => 'DeleteArticleController',
         ]);
     }

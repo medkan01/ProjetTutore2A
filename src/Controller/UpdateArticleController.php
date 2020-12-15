@@ -10,11 +10,11 @@ use App\Entity\Article;
 class UpdateArticleController extends AbstractController
 {
     /**
-     * @Route("/article/update", name="update_article")
+     * @Route("/article/update", name="update")
      */
     public function index(): Response
     {
-        return $this->render('update_article/index.html.twig', [
+        return $this->render('update/updateArticle.html.twig', [
             'controller_name' => 'UpdateArticleController',
         ]);
     }
