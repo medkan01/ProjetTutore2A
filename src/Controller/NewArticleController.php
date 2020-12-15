@@ -20,7 +20,17 @@ class NewArticleController extends AbstractController
         $article->setCreatedAt(new \DateTime('now'));
 
         $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        //Il faut que Mehdi ajoute les vérifications pour que l'article ajouté soit correct et ne créer pas d'erreur(s) dans la bdd
+        if($form->isSubmitted() && $form->isValid()) {
+            $article = $form->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($article);
+            $manager->flush();
 
+            return $this->redirectToRoute('accueil');
+        }
+        
         return $this->render('articles/insert/insertArticle.html.twig', [
             'form' => $form->createView(),
         ]);
