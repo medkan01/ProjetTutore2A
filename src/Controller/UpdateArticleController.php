@@ -3,23 +3,36 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Form\Type\ArticleType;
 
 class UpdateArticleController extends AbstractController
 {
     /**
      * @Route("/articles/update", name="update")
      */
-    public function index(): Response
+    public function updateArticle(Request $request): Response
     {
-        $repo = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repo->findAll();
+        $article = new Article();
+        $article->setCreatedAt(new \DateTime('now'));
 
-        return $this->render('articles/update/listeUpdateArticle.html.twig', [
-            'controller_name' => 'ArticlesController',
-            'articles' => $articles
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        //Il faut que Mehdi ajoute les vérifications pour que l'article ajouté soit correct et ne créer pas d'erreur(s) dans la bdd
+        if($form->isSubmitted() && $form->isValid()) {
+            $article = $form->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($article);
+            $manager->flush();
+
+            return $this->redirectToRoute('accueil');
+        }
+        
+        return $this->render('articles/insert/insertArticle.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
