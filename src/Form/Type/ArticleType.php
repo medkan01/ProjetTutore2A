@@ -11,11 +11,11 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options):void
     {
         $builder
-            ->add('title', TextType::class, ['attr' => ['placeholder' => 'Titre..']])
-            ->add('content', TextType::class, ['attr' => ['placeholder' => 'Saisir le contenu..']])
-            ->add('idUser', TextType::class, ['attr' => ['placeholder' => 'ID de l\'utilisateur..']])
+            ->add('title', TextType::class, ['attr' => ['placeholder' => 'Titre..', 'class' => 'box-input', 'id' => 'titrenews', 'name' => 'titrenews']])
+            ->add('content', TextType::class, ['attr' => ['placeholder' => 'Saisir le contenu..', 'class' => 'box-text-area']])
+            ->add('idUser', TextType::class, ['attr' => ['placeholder' => 'ID de l\'utilisateur..', 'class' => 'box-input']])
             ->add('srcImage', TextType::class, ['attr' => ['placeholder' => 'Source de l\'image..']])
-            ->add('save', SubmitType::class, ['label' => 'Confirmer']);
+            ->add('save', SubmitType::class, ['label' => 'Confirmer', 'attr' => ['class' => 'add-button']]);
     }
 }
 
