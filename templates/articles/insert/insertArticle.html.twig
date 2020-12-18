@@ -2,37 +2,12 @@
 
 {% block title %}Hello NewArticleController!{% endblock %}
 
-{% block style %}
-    <style>
-        #formInsertArticle { border: 1px solid #c4c4c4; border-radius: 2ch; margin: 15% auto; padding: 2%; width: 50%; }
-
-        .box-input { font-size: 14px; background: #fff; border: 1px solid #ddd; border-radius: 5px; margin: 2%;
-        padding-left: 10px; width: 50%; height: 6%; }
-
-        .box-text-area { font-size: 14px; background: #fff; border: 1px solid #ddd; border-radius: 5px; margin: 2%;
-        padding-left: 10px; padding-top: 10px; width: 80%; height: 30%; } 
-
-        .box-input:focus .box-text-area:focus { outline: none; border-color:#5c7186; }
-
-        .add-button { font-size: 18px; text-align: center; color: #fff; background: #d2483c; border: 0; border-radius: 5px;
-        margin-left: 35%; margin-top: 2%; padding: 0; width: 30%; height: 6%; cursor: pointer; outline: 0; }      
-    </style>
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/article/insert/insertArticle.css') }}">
 {% endblock %}
 
 {% block body %}
     <div id='formInsertArticle'>
         {{ form(form) }}
-        <input id="titrenews" type="text" class="box-input" name="titrenews" placeholder="Titre" required /> <br>
-            
-        <input id="minia" type="text" class="box-input" name="minia"
-        placeholder="Lien pour ajouter miniature (non obligatoire)"/> <br>
-
-        <input id="lienimg" type="text" class="box-input" name="lienimg" 
-        placeholder="Lien pour ajouter image ou video (non obligatoire)"/> <br>
-
-        <textarea id="textenews" class="box-text-area" name="textenews" cols="50" rows="5" 
-        placeholder ="Veuillez saisir le contenu de l'article ici ..." required > </textarea> <br>
-            
-		<input type="submit" value="Ajouter" name="save" class="add-button"/>
     </div>
 {% endblock %}

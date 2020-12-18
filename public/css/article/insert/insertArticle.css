@@ -1,0 +1,49 @@
+#formInsertArticle{
+    border: 1px solid #c4c4c4;
+    border-radius: 2ch;
+    margin: 15% auto;
+    padding: 2%;
+    width: 50%;
+}
+
+.box-input {
+    font-size: 14px; background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px; margin: 2%;
+    padding-left: 10px;
+    width: 50%;
+    height: 6%;
+}
+
+.box-text-area {
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 2%;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 80%;
+    height: 30%;
+} 
+
+.box-input:focus .box-text-area:focus {
+    outline: none;
+    border-color:#5c7186;
+}
+
+.add-button {
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    background: #d2483c;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 35%;
+    margin-top: 2%;
+    padding: 0;
+    width: 30%;
+    height: 6%;
+    cursor: pointer;
+    outline: 0;
+} 
