@@ -1,6 +1,7 @@
 <?php
 namespace App\Form\Type;
 
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -11,11 +12,11 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options):void
     {
         $builder
-            ->add('title', TextType::class, ['attr' => ['placeholder' => 'Titre..']])
-            ->add('content', TextType::class, ['attr' => ['placeholder' => 'Saisir le contenu..']])
-            ->add('idUser', TextType::class, ['attr' => ['placeholder' => 'ID de l\'utilisateur..']])
-            ->add('srcImage', TextType::class, ['attr' => ['placeholder' => 'Source de l\'image..']])
-            ->add('save', SubmitType::class, ['label' => 'Confirmer']);
+            ->add('title', TextType::class, ['attr' => ['placeholder' => 'Titre', 'class' => 'box-input']])
+            ->add('content', CKEditorType::class, ['attr' => ['placeholder' => 'Contenu de l\'article', 'class' => 'box-input-art']])
+            ->add('idUser', TextType::class, ['attr' => ['placeholder' => 'ID du redacteur', 'class' => 'box-input']])
+            ->add('srcImage', TextType::class, ['attr' => ['placeholder' => 'Source de l\'image', 'class' => 'box-input']])
+            ->add('save', SubmitType::class, ['label' => 'Confirmer', 'attr' => ['class' => 'add-button']]);
     }
 }
 

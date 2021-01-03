@@ -2,6 +2,10 @@
 
 {% block title %}Hello NewArticleController!{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/article/insert/insertArticle.css') }}">
+{% endblock %}
+
 {% block body %}
     <div id='formInsertArticle'>
         {{ form(form) }}
