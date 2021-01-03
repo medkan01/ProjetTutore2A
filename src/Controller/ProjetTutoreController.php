@@ -27,5 +27,4 @@ class ProjetTutoreController extends AbstractController
             'titre' => 'Bienvenue sur ProjetTutore'
         ]);
     }
-    // pull request
 }
