@@ -16,6 +16,7 @@ class UpdateArticleController extends AbstractController
      */
     public function updateArticle(Request $request, Article $article): Response
     {
+        
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         //Il faut que Sylvio ajoute les vérifications pour que l'article ajouté soit correct et ne créer pas d'erreur(s) dans la bdd
