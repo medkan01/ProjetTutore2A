@@ -14,6 +14,7 @@ class ArticlesController extends AbstractController
     /**
      * @Route("/articles", name="articles")
      */
+    
     public function index(ArticleRepository $repo, Request $request, PaginatorInterface $paginator): Response
     {
         $donnees = $repo->findAll();
