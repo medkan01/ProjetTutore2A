@@ -12,7 +12,7 @@ use App\Form\Type\ArticleType;
 class NewArticleController extends AbstractController
 {
     /**
-     * @Route("/articles/insert", name="insert")
+     * @Route("/insertArticle", name="insert")
      */
     public function createArticle(Request $request): Response
     {
@@ -31,7 +31,7 @@ class NewArticleController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
         
-        return $this->render('articles/insert/insertArticle.html.twig', [
+        return $this->render('articles/insertArticle.html.twig', [
             'form' => $form->createView()
         ]);
     }

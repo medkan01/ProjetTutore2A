@@ -19,7 +19,4 @@ class ArticleType extends AbstractType
             ->add('save', SubmitType::class, ['label' => 'Confirmer', 'attr' => ['class' => 'add-button']]);
     }
 }
-
-
-
 ?>

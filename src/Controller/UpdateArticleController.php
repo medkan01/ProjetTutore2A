@@ -12,15 +12,27 @@ use App\Form\Type\ArticleType;
 class UpdateArticleController extends AbstractController
 {
     /**
-     * @Route("/articles/update/liste", name="listeUpdate")
+     * @Route("/update/{id}", name="update")
      */
-    public function index(): Response
+    public function updateArticle(Request $request, Article $article): Response
     {
-        $repo = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repo->findAll();
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        //Il faut que Sylvio ajoute les vérifications pour que l'article ajouté soit correct et ne créer pas d'erreur(s) dans la bdd
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $newArticle = $form->getData();
+            $article->setTitle($newArticle->getTitle())
+                ->setContent($newArticle->getContent())
+                ->setIdUser($newArticle->getIdUser())
+                ->setSrcImage($newArticle->getSrcImage())
+                ->setUpdatedAt(new \DateTime('now'));
+            $manager->flush();
 
-        return $this->render('articles/update/listeArticle.html.twig', [
-            'articles' => $articles
+            return $this->redirectToRoute('liste_articles');
+        }
+        return $this->render('articles/updateArticle.html.twig', [
+            'form' => $form->createView()
        ]);
     }
 }

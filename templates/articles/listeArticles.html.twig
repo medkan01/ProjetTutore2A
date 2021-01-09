@@ -5,6 +5,10 @@
 {% block body %}
     {% for article in articles %}
         <div class="titreArticle"><p>{{ article.title }}</p></div>
+        <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
+        {% if article.updatedAt != NULL %}
+            <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
+        {% endif %}
         <div class="boutonModifier"><a href="{{ path('update', {'id': article.id}) }}">Modifier</a>
         <div class="boutonSupprimer"><a href="{{ path('delete', {'id': article.id}) }}">Supprimer</a></div>
     {% endfor %}
