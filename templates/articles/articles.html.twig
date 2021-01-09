@@ -7,6 +7,9 @@
 {% for article in articles %}
     <div class="titreArticle"><h2>{{article.title}}</h2></div>
     <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
+    {% if article.updatedAt != NULL %}
+        <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
+    {% endif %}
     <div class="content"><p>{{ article.content }}</p></div>
 {% endfor %}
 {{ knp_pagination_render(articles) }}

@@ -12,20 +12,7 @@ use App\Form\Type\ArticleType;
 class UpdateArticleController extends AbstractController
 {
     /**
-     * @Route("/articles/update/liste", name="listeUpdate")
-     */
-    public function index(): Response
-    {
-        $repo = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repo->findAll();
-
-        return $this->render('articles/update/listeArticle.html.twig', [
-            'articles' => $articles
-       ]);
-    }
-
-     /**
-     * @Route("/articles/update/{id}", name="article_update")
+     * @Route("/update/{id}", name="update")
      */
     public function updateArticle(Request $request, Article $article): Response
     {
@@ -38,12 +25,13 @@ class UpdateArticleController extends AbstractController
             $article->setTitle($newArticle->getTitle())
                 ->setContent($newArticle->getContent())
                 ->setIdUser($newArticle->getIdUser())
-                ->setSrcImage($newArticle->getSrcImage());
+                ->setSrcImage($newArticle->getSrcImage())
+                ->setUpdatedAt(new \DateTime('now'));
             $manager->flush();
 
-            return $this->redirectToRoute('listeUpdate');
+            return $this->redirectToRoute('liste_articles');
         }
-        return $this->render('articles/update/updateArticle.html.twig', [
+        return $this->render('articles/updateArticle.html.twig', [
             'form' => $form->createView()
        ]);
     }
