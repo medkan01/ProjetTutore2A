@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+    {% for article in articles %}
+        <div class="titreArticle"><p>{{ article.title }}</p></div>
+        <div class="boutonModifier"><a href="{{ path('article_update', {'id': article.id}) }}">Modifier</a>
+        <div class="boutonSupprimer"><a href="{{ path('article_delete', {'id': article.id}) }}">Supprimer</a></div>
+    {% endfor %}
+{% endblock %}
