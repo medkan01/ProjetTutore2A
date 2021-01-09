@@ -5,7 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use App\Form\Type\ArticleType;
+
 
 class ListeArticlesController extends AbstractController
 {
@@ -16,9 +20,44 @@ class ListeArticlesController extends AbstractController
     {
         $articles = $repo->findAll();
 
-        return $this->render('liste_articles/listeArticles.html.twig', [
+        return $this->render('articles/listeArticles.html.twig', [
             'controller_name' => 'ArticlesController',
             'articles' => $articles
         ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function deleteArticle(Article $article): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($article);
+        $entityManager->flush();
+        return $this->redirectToRoute('liste_articles');
+    }
+
+    /**
+     * @Route("/update/{id}", name="update")
+     */
+    public function updateArticle(Request $request, Article $article): Response
+    {
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        //Il faut que Sylvio ajoute les vérifications pour que l'article ajouté soit correct et ne créer pas d'erreur(s) dans la bdd
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $newArticle = $form->getData();
+            $article->setTitle($newArticle->getTitle())
+                ->setContent($newArticle->getContent())
+                ->setIdUser($newArticle->getIdUser())
+                ->setSrcImage($newArticle->getSrcImage());
+            $manager->flush();
+
+            return $this->redirectToRoute('liste_articles');
+        }
+        return $this->render('articles/listeArticles.html.twig', [
+            'form' => $form->createView()
+       ]);
     }
 }
