@@ -20,7 +20,7 @@ class ArticlesController extends AbstractController
         $articles = $paginator->paginate(
             $donnees, //On passe les données
             $request->query->getInt('page', 1),//Numéro de la page en cours, 1 par défaut
-            2
+            2 // Nombre d'articles par page
         );
         return $this->render('articles/articles.html.twig', [
             'controller_name' => 'ArticlesController',
