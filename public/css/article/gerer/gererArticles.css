@@ -1,0 +1,70 @@
+#titre {
+    margin-top: 20px;
+    font-size: 3ch;
+    text-shadow: 2px 2px 4px #beceff;
+}
+
+.box {
+    border: 1px solid #c4c4c4;
+    border-radius: 2ch;
+    margin: 10px auto;
+    width: 30%;
+    padding: 10px;
+    height: 100px;
+    background-color: white;
+    box-shadow: 2px 2px 4px #beceff;
+    display: inline-block;
+}
+
+.titreArticle {
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px #beceff;
+    text-transform: bold;
+}
+
+.modifBouton {
+    font-size: 15px;
+    text-align: center;
+    background: #FAB266;
+    border: 0;
+    border-radius: 5px;
+    padding: 3px;
+    margin: auto;
+    margin-top: 10px;
+    width: 20%;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.supprBouton {
+    font-size: 15px;
+    text-align: center;
+    background: #FA6666;
+    border: 0;
+    border-radius: 5px;
+    padding: 3px;
+    margin: auto;
+    margin-top: 10px;
+    width: 20%;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.bouton {
+    text-decoration: none;
+    color: #fff;
+}
+
+#videofond {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background: url(video.jpg) no-repeat;
+    background-size: cover;
+}

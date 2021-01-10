@@ -2,11 +2,17 @@
     border: 1px solid #c4c4c4;
     border-radius: 2ch;
     padding: 20px;
-    margin-top: 38px;
-    margin-left: 275px;
+    margin: auto;
+    margin-top: 20px;
     width: 60%;
     height: 50%;
     background-color: white;
+    box-shadow: 2px 2px 4px #beceff;
+}
+
+#titre {
+    font-size: 3ch;
+    text-shadow: 2px 2px 4px #beceff;
 }
 
 .box-input {
@@ -15,6 +21,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     padding-left: 10px;
+    margin-left: 0;
     margin-bottom: 20px;
     width: 40%;
     height: 30px;
@@ -52,10 +59,11 @@
     font-size: 18px;
     text-align: center;
     color: #fff;
-    background: #d2483c;
+    background: #FA6666;
     border: 0;
     border-radius: 5px;
     padding: 0;
+    margin: auto;
     width: 20%;
     height: 30px;
     cursor: pointer;
@@ -73,4 +81,8 @@
     z-index: -100;
     background: url(video.jpg) no-repeat;
     background-size: cover;
+}
+
+label {
+    display: none;
 }

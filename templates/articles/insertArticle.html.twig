@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NewArticleController!{% endblock %}
+{% block title %}Creation Article{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/article/insert/insertArticle.css') }}">
@@ -12,6 +12,7 @@
             <source src="images/video.mp4" type="video/mp4">
         </video>
         <div id='formInsertArticle'>
+            <h1 id="titre">Creation d'un Article</h1> <br>
             {{ form(form) }}
         </div>
     </section>
