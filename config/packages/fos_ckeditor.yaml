@@ -1,10 +1,8 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
 twig:
-    default_path: '%kernel.project_dir%/templates'
-    debug: '%kernel.debug%'
-    strict_variables: '%kernel.debug%'
-    exception_controller: null
     form_themes:
-       - '@FOSCKEditor/form/ckeditor_widget.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 
 fos_ck_editor:
     configs:
@@ -13,4 +11,3 @@ fos_ck_editor:
                 - { name: "styles", items: ['Bold', 'Italic', 'Underline', 'Strike', 'Blockquote', '-', 'Link', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Image', 'Table', '-', 'Styles', 'Format','Font','FontSize', '-', 'TextColor', 'BGColor', 'Source'] }
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
-
