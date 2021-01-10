@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block body %}
-    <div id='formInsertArticle'>
-        {{ form(form) }}
-    </div>
+    <section>
+        <video autoplay loop poster="video.jpg" id="videofond">
+            <source src="images/video.mp4" type="video/mp4">
+        </video>
+        <div id='formUpdateArticle'>
+            {{ form(form) }}
+        </div>
+    </section>
 {% endblock %}

@@ -1,0 +1,33 @@
+.box-accueil {
+    border: 1px solid #c4c4c4;
+    border-radius: 2ch;
+    padding: 2%;
+    margin-top: 105px;
+    margin-left: 23%;
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    box-shadow: 2px 2px 4px #beceff;
+}
+
+#accueil-image {
+    width: 30%;
+}
+
+#titre {
+    font-size: 5ch;
+    text-shadow: 2px 2px 4px #beceff;
+}
+
+#videofond {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background: url(video.jpg) no-repeat;
+    background-size: cover;
+}

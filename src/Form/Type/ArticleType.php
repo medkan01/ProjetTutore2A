@@ -14,8 +14,8 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', TextType::class, ['attr' => ['placeholder' => 'Titre', 'class' => 'box-input']])
             ->add('content', CKEditorType::class, ['attr' => ['placeholder' => 'Contenu de l\'article', 'class' => 'box-input-art']])
-            ->add('idUser', TextType::class, ['attr' => ['placeholder' => 'ID du redacteur', 'class' => 'box-input']])
-            ->add('srcImage', TextType::class, ['attr' => ['placeholder' => 'Source de l\'image', 'class' => 'box-input']])
+            ->add('idUser', TextType::class, ['attr' => ['placeholder' => 'ID du Redacteur', 'class' => 'box-input-v2']])
+            ->add('srcImage', TextType::class, ['attr' => ['placeholder' => 'Source de votre Image', 'class' => 'box-input']])
             ->add('save', SubmitType::class, ['label' => 'Confirmer', 'attr' => ['class' => 'add-button']]);
     }
 }
