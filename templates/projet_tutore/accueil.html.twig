@@ -1,14 +1,29 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/accueil/accueil.css')}}">
+{% endblock %}
+
 <html>
+    <section>
 
-<h1>{{titre}}</h1>
+        <video autoplay loop poster="video.jpg" id="videofond">
+            <source src="images/video.mp4" type="video/mp4">
+        </video>
 
-<p>Un test pour un première page !</p>
-<p>Ce projet à normalement été récuperé via GitHub !</p>
-<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate eaque modi laborum voluptates consequatur repellendus fuga, ipsum maxime, architecto enim ullam excepturi quis. Sapiente qui distinctio dolor eos, fugiat sed molestiae fugit porro perspiciatis, eius ducimus nemo reprehenderit magni dolores.</p>
-<p>Nisi, quae. Suscipit, pariatur enim. Inventore natus assumenda, autem quidem iure repellat vitae quisquam molestiae fugiat ipsum asperiores tenetur temporibus, eaque sint, soluta omnis sequi doloribus commodi praesentium similique totam fugit corporis! Aspernatur illo in, eos voluptatum labore sed perferendis.</p>
+        <div class="box-accueil">
+
+            <h1 id="titre">Bienvenue sur notre site de Redaction d'Articles !</h1>
+
+            <img id="accueil-image" src="images/accueil.png" alt="" />
+
+            <p>Ce projet a été entièrement réalisé par nous 5 dans le cadre d'un Projet Tutoré portant sur le Back-office Web pendant le 3ème Semestre 
+            de DUT Informatique - Années : 2019 - 2021</p>
+    
+        </div>
+
+    </section>
 
 </html>
 
