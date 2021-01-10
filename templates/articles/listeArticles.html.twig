@@ -1,15 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des articles{% endblock %}
+{% block title %}Gérer les Articles{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/article/gerer/gererArticles.css') }}">
+{% endblock %}
 
 {% block body %}
-    {% for article in articles %}
-        <div class="titreArticle"><p>{{ article.title }}</p></div>
-        <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
-        {% if article.updatedAt != NULL %}
-            <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
-        {% endif %}
-        <div class="boutonModifier"><a href="{{ path('update', {'id': article.id}) }}">Modifier</a>
-        <div class="boutonSupprimer"><a href="{{ path('delete', {'id': article.id}) }}">Supprimer</a></div>
-    {% endfor %}
+    <section>
+
+        <video autoplay loop poster="video.jpg" id="videofond">
+            <source src="images/video.mp4" type="video/mp4">
+        </video>
+
+        <h1 id="titre">Gérer les Articles</h1> <br>
+
+        {% for article in articles %}
+            <div class="box">
+                <div class="titreArticle"><p>{{ article.title }}</p></div>
+                <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
+
+                {% if article.updatedAt != NULL %}
+                    <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
+                {% endif %}
+
+                <div class="modifBouton"><a class="bouton" href="{{ path('update', {'id': article.id}) }}">Modifier</a> </div>
+                <div class="supprBouton"><a class="bouton" href="{{ path('delete', {'id': article.id}) }}">Supprimer</a> </div>
+            </div>
+        {% endfor %}
+
+    </section>
 {% endblock %}
