@@ -7,8 +7,8 @@
 .box {
     border: 1px solid #c4c4c4;
     border-radius: 2ch;
-    margin: 10px auto;
-    width: 30%;
+    margin: 15px;
+    width: 45%;
     padding: 10px;
     height: 100px;
     background-color: white;
@@ -17,42 +17,31 @@
 }
 
 .titreArticle {
-    font-size: 22px;
+    font-size: 16px;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px #beceff;
 }
 
-.modifBouton {
-    font-size: 15px;
-    text-align: center;
-    background: #FAB266;
-    border: 0;
-    border-radius: 5px;
-    padding: 3px;
-    margin: auto;
-    margin-top: 10px;
-    width: 20%;
-    cursor: pointer;
-    display: inline-block;
+.date {
+    margin-bottom: 10px;
 }
 
-.supprBouton {
-    font-size: 15px;
-    text-align: center;
-    background: #FA6666;
-    border: 0;
-    border-radius: 5px;
-    padding: 3px;
-    margin: auto;
-    margin-top: 10px;
-    width: 20%;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.bouton {
+.page {
+    color: black;
     text-decoration: none;
-    color: #fff;
+}
+
+.pagination {
+    text-align: center;
+    background: orange;
+    width: 10%;
+    height: 25px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 3px;
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 #videofond {
