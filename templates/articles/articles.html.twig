@@ -2,15 +2,34 @@
 
 {% block title %}Nos différents Articles{% endblock %}
 
-{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/article/liste/nosArticles.css') }}">
+{% endblock %}
 
-{% for article in articles %}
-    <div class="titreArticle"><h2>{{article.title}}</h2></div>
-    <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
-    {% if article.updatedAt != NULL %}
-        <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
-    {% endif %}
-    <div class="content"><p>{{ article.content | raw}}</p></div>
-{% endfor %}
-{{ knp_pagination_render(articles) }}
+{% block body %}
+    <section>
+
+        <video autoplay loop poster="video.jpg" id="videofond">
+            <source src="images/video.mp4" type="video/mp4">
+        </video>
+
+        <h1 id="titre">Voici nos Différents Articles</h1> <br>
+
+        {% for article in articles %}
+            <div class="box">
+                <div class="titreArticle"><h2>{{article.title}}</h2></div>
+                <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
+
+                {% if article.updatedAt != NULL %}
+                    <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
+                {% endif %}
+
+                <div class="content"><p>{{ article.content | raw}}</p></div>
+            </div>
+        
+        {% endfor %}
+
+        <div class="pagination"> <a class="page"{{ knp_pagination_render(articles) }}> </div>
+
+    </section>
 {% endblock %}
