@@ -2,9 +2,6 @@
 
 use App\Repository\ArticleRepository;
 
-/**
-* @Route("/export", name="export")
-*/
 function export(ArticleRepository $repo){
   $donnees = $repo->findAll();
 
