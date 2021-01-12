@@ -28,10 +28,12 @@ class User
      */
     private $password;
 
+    public $confirm_password;
+    
     /**
-     * @ORM\Column(type="simple_array")
+     * @ORM\Column(type="string", length=40)
      */
-    private $roles = [];
+    private $roles;
 
     /**
      * @ORM\Column(type="string", length=40)
@@ -82,28 +84,22 @@ class User
         return $this;
     }
 
-    public function getRoles(): ?array
+    public function getRoles(): ?string
     {
         return $this->roles;
     }
 
-    public function setRoles(array $roles): self
-    {
-        if($roles == []){
-            throw new Exception("Aucun role saisi");
-        } else {
-            for($i = 0; $i < sizeof($roles); $i++){
-                if($roles[$i] == '')
-                {
-                    throw new Exception("Un ou plusieurs roles saisis sont vides");
-                }
+    public function setRoles(string $roles): self
+        {
+            if ((trim($roles) == null) or (trim($roles) == ''))
+            {
+                throw new Exception("Le mot de passe saisi est vide");
+            } else {
+                $this->roles = trim($roles);
             }
-            $this->roles = $roles;
+    
+            return $this;
         }
-        
-
-        return $this;
-    }
 
     public function getName(): ?string
     {
