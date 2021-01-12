@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
+        "dompdf/dompdf": "^1.0",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
         "helios-ag/fm-elfinder-bundle": "^10.0",
         "knplabs/knp-paginator-bundle": "^5.3",

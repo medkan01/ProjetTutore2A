@@ -26,6 +26,7 @@
 
                 <div class="modifBouton"><a class="bouton" href="{{ path('update', {'id': article.id}) }}">Modifier</a> </div>
                 <div class="supprBouton"><a class="bouton" href="{{ path('delete', {'id': article.id}) }}">Supprimer</a> </div>
+                <div class="supprBouton"><a class="bouton" href="{{ path('export.php') }}">Exporter</a> </div>
             </div>
         {% endfor %}
 

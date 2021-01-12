@@ -9,6 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Form\Type\ArticleType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+// Include Dompdf required namespaces
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 
 class ListeArticlesController extends AbstractController
