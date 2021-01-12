@@ -10,6 +10,7 @@ use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Form\Type\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use XMLWriter;
 
 // Include Dompdf required namespaces
 use Dompdf\Dompdf;
@@ -43,25 +44,20 @@ class ListeArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/export/{id}", name="export")
+     * @Route("/export/{id}", name="exportationXML")
      */
-    function export(ArticleRepository $repo){
-        $donnees = $repo->findAll();
+    function export(Article $article){
       
         $xml= new XMLWriter();
         $xml->openUri("articles.xml");
         $xml->startDocument('1.0', 'utf-8');
         $xml->startElement('mesarticles');
-      
-        while($donnees->fetch()){
-          $xml->startElement('article');
-          $xml->writeAttribute('id', $donnees['id']);
-          $xml->writeElement('titre',$donnees['title']);
-          $xml->writeElement('date',$donnees['created_at']);
-          $xml->writeElement('contenu',$donnees['content']);
-          $xml->endElement();
-        }
-        
+        $xml->startElement('article');
+        $xml->writeAttribute('id', $article['id']);
+        $xml->writeElement('titre',$article['title']);
+        $xml->writeElement('date',$article['created_at']);
+        $xml->writeElement('contenu',$article['content']);
+        $xml->endElement();
         $xml->endElement();
         $xml->endElement();
         $xml->flush();
