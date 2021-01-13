@@ -29,6 +29,6 @@
                 <div class="exportBouton"><a class="bouton" href="{{ path('exportationXML', {'id': article.id}) }}">Exporter</a> </div>
             </div>
         {% endfor %}
-
     </section>
+    <div class="pagination"> <a class="page"{{ knp_pagination_render(articles) }}> </div>
 {% endblock %}

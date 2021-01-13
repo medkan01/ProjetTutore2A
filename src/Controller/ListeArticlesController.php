@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Form\Type\ArticleType;
@@ -19,9 +18,14 @@ class ListeArticlesController extends AbstractController
     /**
      * @Route("/listeArticles", name="liste_articles")
      */
-    public function index(ArticleRepository $repo): Response
+    public function index(ArticleRepository $repo,  Request $request, PaginatorInterface $paginator): Response
     {
-        $articles = $repo->findAll();
+        $donnees = $repo->findAll();
+        $articles = $paginator->paginate(
+            $donnees, //On passe les données
+            $request->query->getInt('page', 1),//Numéro de la page en cours, 1 par défaut
+            6 // Nombre d'articles par page
+        );
 
         return $this->render('articles/listeArticles.html.twig', [
             'controller_name' => 'ArticlesController',
