@@ -26,23 +26,26 @@
     margin-bottom: 10px;
 }
 
-.page {
+.pagination  {
+    display: inline-block;
+  }
+  
+.pagination a, .current{
     color: black;
+    float: left;
+    padding: 8px 16px;
     text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
 }
 
-.pagination {
-    text-align: center;
-    background: orange;
-    width: 10%;
-    height: 25px;
-    margin: auto;
-    margin-top: 20px;
-    padding: 3px;
-    border: 0;
-    border-radius: 50px;
-    cursor: pointer;
+.current {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
 }
+  
+.pagination a:hover {background-color: #ddd;}
 
 #videofond {
     position: fixed;
@@ -56,3 +59,41 @@
     background: url(video.jpg) no-repeat;
     background-size: cover;
 }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
