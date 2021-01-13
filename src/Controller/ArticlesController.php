@@ -29,3 +29,4 @@ class ArticlesController extends AbstractController
         ]);
     }
 }
+

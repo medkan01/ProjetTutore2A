@@ -10,7 +10,8 @@ use App\Repository\ArticleRepository;
 use App\Form\Type\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use XMLWriter;
-
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ListeArticlesController extends AbstractController
 {

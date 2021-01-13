@@ -2,14 +2,25 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\ORM\Mapping as ORM;
 use Exception;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *  fields={"email"},
+ *  message= "l'email indiqué est déjà utilisé"
+ * )
+ * * @UniqueEntity(
+ *  fields={"username"},
+ *  message= "le nom d'utilisateur est déjà utilisé"
+ * )
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -20,18 +31,23 @@ class User
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\Length(min="8", minMessage = "Votre mot de passe doit faire minimum 8 caractères")
+     * @Assert\EqualTo(propertyPath="confirm_password", message="Les mots de passe ne sont pas identique")
      */
     private $password;
 
+    public $confirm_password;
+    
     /**
-     * @ORM\Column(type="simple_array")
+     * @ORM\Column(type="string", length=40)
      */
-    private $roles = [];
+    private $roles;
 
     /**
      * @ORM\Column(type="string", length=40)
@@ -82,28 +98,22 @@ class User
         return $this;
     }
 
-    public function getRoles(): ?array
+    public function getRoles(): ?string
     {
         return $this->roles;
     }
 
-    public function setRoles(array $roles): self
-    {
-        if($roles == []){
-            throw new Exception("Aucun role saisi");
-        } else {
-            for($i = 0; $i < sizeof($roles); $i++){
-                if($roles[$i] == '')
-                {
-                    throw new Exception("Un ou plusieurs roles saisis sont vides");
-                }
+    public function setRoles(string $roles): self
+        {
+            if ((trim($roles) == null) or (trim($roles) == ''))
+            {
+                throw new Exception("Le mot de passe saisi est vide");
+            } else {
+                $this->roles = trim($roles);
             }
-            $this->roles = $roles;
+    
+            return $this;
         }
-        
-
-        return $this;
-    }
 
     public function getName(): ?string
     {
@@ -137,5 +147,11 @@ class User
         }
 
         return $this;
+    }
+
+    public function eraseCredentials() {}
+
+    public function getSalt(){
+
     }
 }
