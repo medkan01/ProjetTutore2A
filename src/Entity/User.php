@@ -36,7 +36,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=200)
      * @Assert\Length(min="8", minMessage = "Votre mot de passe doit faire minimum 8 caractères")
      * @Assert\EqualTo(propertyPath="confirm_password", message="Les mots de passe ne sont pas identique")
      */
@@ -98,9 +98,9 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRoles()
     {
-        return $this->roles;
+        return array('ROLE_USER');
     }
 
     public function setRoles(string $roles): self
