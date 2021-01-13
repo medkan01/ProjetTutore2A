@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ListeArticlesController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_MODO")
+     * @IsGranted("ROLE_USER")
      * @Route("/listeArticles", name="liste_articles")
      */
     public function index(ArticleRepository $repo,  Request $request, PaginatorInterface $paginator): Response

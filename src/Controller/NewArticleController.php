@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NewArticleController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_MODO")
+     * @IsGranted("ROLE_USER")
      * @Route("/insertArticle", name="insert")
      */
     public function createArticle(Request $request): Response
