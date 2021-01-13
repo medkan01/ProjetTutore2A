@@ -11,7 +11,8 @@ use App\Form\Type\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Constraints\DateTime;
 use XMLWriter;
-
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ListeArticlesController extends AbstractController
 {
