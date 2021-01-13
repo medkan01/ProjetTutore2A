@@ -100,23 +100,14 @@ class User implements UserInterface
 
     public function getRoles(): ?array
     {
-        return $this->roles;
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
     {
-        if($roles == []){
-            throw new Exception("Aucun role saisi");
-        } else {
-            for($i = 0; $i < sizeof($roles); $i++){
-                if($roles[$i] == '')
-                {
-                    throw new Exception("Un ou plusieurs roles saisis sont vides");
-                }
-            }
-            $this->roles = $roles;
-        }
-        
+        $this->roles = $roles;
 
         return $this;
     }
