@@ -45,9 +45,9 @@ class User implements UserInterface
     public $confirm_password;
     
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="simple_array")
      */
-    private $roles;
+    private $roles = [];
 
     /**
      * @ORM\Column(type="string", length=40)
@@ -98,22 +98,28 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles()
+    public function getRoles(): ?array
     {
-        return array('ROLE_USER');
+        return $this->roles;
     }
 
-    public function setRoles(string $roles): self
-        {
-            if ((trim($roles) == null) or (trim($roles) == ''))
-            {
-                throw new Exception("Le mot de passe saisi est vide");
-            } else {
-                $this->roles = trim($roles);
+    public function setRoles(array $roles): self
+    {
+        if($roles == []){
+            throw new Exception("Aucun role saisi");
+        } else {
+            for($i = 0; $i < sizeof($roles); $i++){
+                if($roles[$i] == '')
+                {
+                    throw new Exception("Un ou plusieurs roles saisis sont vides");
+                }
             }
-    
-            return $this;
+            $this->roles = $roles;
         }
+        
+
+        return $this;
+    }
 
     public function getName(): ?string
     {
