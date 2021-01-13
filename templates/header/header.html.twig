@@ -10,6 +10,11 @@
 					<a href="{{ path('articles') }}" class="hvr-underline"> Articles </a>
 					<a href="{{ path('insert') }}" class="hvr-underline"> Créer </a>
 					<a href="{{ path('liste_articles') }}" class="hvr-underline"> Gérer </a>
+					{% if not app.user %}
+						<a href="{{ path('security_login') }}" class="hvr-underline"> Connexion </a>
+					{% else %}
+						<a href="{{ path('security_logout') }}" class="hvr-underline"> Déconnexion </a>
+					{% endif %}
 				</nav>
 			</div>
 		</header>
