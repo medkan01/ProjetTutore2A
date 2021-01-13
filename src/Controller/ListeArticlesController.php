@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
-use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\HttpFoundation\Request;
+use App\Form\Type\ArticleType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\DateTime;
+use XMLWriter;
 
 
 class ListeArticlesController extends AbstractController
@@ -41,4 +43,38 @@ class ListeArticlesController extends AbstractController
         $entityManager->flush();
         return $this->redirectToRoute('liste_articles');
     }
+
+    /**
+     * @Route("/export/{id}", name="exportationXML")
+     */
+    function export(Article $article){
+      
+        $xml= new XMLWriter();
+
+        $date = $article->getCreatedAt();
+        $result = $date->format('Y-m-d H:i:s');
+        $result2 = "pas de modification";
+
+        if($article->getUpdatedAt() != null){
+            $date = $article->getUpdatedAt();
+            $result2 = $date->format('Y-m-d H:i:s');
+        }
+
+        $xml->openUri("articles".$article->getId().".xml");
+        $xml->startDocument('1.0', 'utf-8');
+        $xml->startElement('Article');
+        $xml->writeElement('id', $article->getId());
+        $xml->writeElement('titre',$article->getTitle());
+        $xml->writeElement('datecreation',$result);
+        $xml->writeElement('datemodification',$result2);
+        $xml->writeElement('contenu',$article->getContent());
+        $xml->writeElement('image',$article->getSrcImage());
+        $xml->endElement();
+        $xml->endElement();
+        $xml->endElement();
+        $xml->endElement();
+        $xml->endElement();
+        $xml->flush();
+        return $this->redirectToRoute('liste_articles');
+      }
 }

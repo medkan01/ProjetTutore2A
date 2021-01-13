@@ -18,16 +18,15 @@
         {% for article in articles %}
             <div class="box">
                 <div class="titreArticle"><p>{{ article.title }}</p></div>
-                <div class="date">
-                    <div >Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
-                    {% if article.updatedAt != NULL %}
-                        <div>Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
-                    {% endif %}
-                </div>
-                <div classe="bouton">
-                    <div class="modifBouton"><a class="bouton" href="{{ path('update', {'id': article.id}) }}">Modifier</a> </div>
-                    <div class="supprBouton"><a class="bouton" href="{{ path('delete', {'id': article.id}) }}">Supprimer</a> </div>
-                </div>
+                <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
+
+                {% if article.updatedAt != NULL %}
+                    <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
+                {% endif %}
+
+                <div class="modifBouton"><a class="bouton" href="{{ path('update', {'id': article.id}) }}">Modifier</a> </div>
+                <div class="supprBouton"><a class="bouton" href="{{ path('delete', {'id': article.id}) }}">Supprimer</a> </div>
+                <div class="exportBouton"><a class="bouton" href="{{ path('exportationXML', {'id': article.id}) }}">Exporter</a> </div>
             </div>
         {% endfor %}
     </section>
