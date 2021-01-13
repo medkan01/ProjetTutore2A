@@ -8,14 +8,10 @@
 
 {% block body %}
     <section>
-
-        <video autoplay loop poster="video.jpg" id="videofond">
-            <source src="images/video.mp4" type="video/mp4">
-        </video>
-
         <h1 id="titre">Voici nos Différents Articles</h1> <br>
 
         {% for article in articles %}
+            
             <div class="box">
                 <div class="titreArticle"><h2>{{article.title}}</h2></div>
                 <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
@@ -25,11 +21,39 @@
                 {% endif %}
 
                 <div class="content"><p>{{ article.content | raw}}</p></div>
+
+                <button id="myBtn">Open Modal</button>
+                <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Some text in the Modal..</p>
+                </div>
+                </div>
+
+                {% block javascripts %}
+                    <script type="text/javascript">
+                        var modal = document.getElementById("myModal");
+                        var btn = document.getElementById("myBtn");
+                        var span = document.getElementsByClassName("close")[0];
+                        btn.onclick = function() {
+                            modal.style.display = "block";
+                        }
+                        span.onclick = function() {
+                            modal.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                        }
+                        } 
+                    </script>
+                {% endblock %}
+
             </div>
         
         {% endfor %}
 
-        <div class="pagination"> <a class="page"{{ knp_pagination_render(articles) }}> </div>
+        <div class="pagination"> {{ knp_pagination_render(articles) }}  </div>
 
     </section>
 {% endblock %}
