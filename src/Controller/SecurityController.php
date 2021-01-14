@@ -7,12 +7,15 @@ use App\Form\RegistrationType;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/inscription", name="security_registration")
      */
     public function registration(Request $request, UserPasswordEncoderInterface $encoder){
@@ -30,7 +33,8 @@ class SecurityController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            return $this->redirectToRoute('security_login');
+            $this->addFlash('success', 'Utilisateur créer avec succès');
+            return $this->redirectToRoute('security_registration');
         }
 
         return $this->render('security/registration.html.twig',[
@@ -42,7 +46,18 @@ class SecurityController extends AbstractController
     /**
      * @Route("/connexion", name="security_login")
      */
-    public function login(){
-        return $this->render('security/login.html.twig');
+    public function login(Request $request, AuthenticationUtils $authenticationUtils){
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/login.html.twig', array(
+	        'last_username' => $lastUsername,
+	        'error'         => $error,
+	    ));
     }
+
+    /**
+     * @Route("/deconnexion", name="security_logout")
+     */
+    public function logout(){}
 }

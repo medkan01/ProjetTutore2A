@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Form\Type\ArticleType;
@@ -12,10 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use XMLWriter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ListeArticlesController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/listeArticles", name="liste_articles")
      */
     public function index(ArticleRepository $repo,  Request $request, PaginatorInterface $paginator): Response

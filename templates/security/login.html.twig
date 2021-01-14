@@ -5,13 +5,13 @@
 
     <form action="{{ path('security_login') }}" method="post">
         <div class="">
-        <input placeholder = "Nom d'Utilisateur" required name="_username" type="text" class="">
+            <input placeholder="Nom d'Utilisateur" required name="_username" type="text" value="{{ last_username }}" class="">
         </div>
         <div class="">
-        <input placeholder = "Mot de Passe" required name="_password" type="password" class="">
+            <input placeholder="Mot de Passe" required name="_password" type="password" class="">
         </div>
         <div class="">
-        <button type="submit">Connexion</button>
+            <button type="submit">Connexion</button>
         </div>
     </form>
 {% endblock %}
