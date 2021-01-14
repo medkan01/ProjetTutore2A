@@ -46,3 +46,11 @@
     cursor: pointer;
     outline: 0;
 }
+
+#registration_roles{
+    margin-top:15px;
+}
+
+#registration_roles input{
+    margin: 5px;
+}

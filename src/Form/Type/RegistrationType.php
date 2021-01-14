@@ -18,11 +18,12 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username', TextType::class, ['attr' => ['placeholder' => 'Nom d\' Utilisateur', 'class' => 'box-input', 'label' => ' ']])
-        ->add('name', TextType::class, ['attr' => ['placeholder' => 'Nom', 'class' => 'box-input']])
-        ->add('email', TextType::class, ['attr' => ['placeholder' => 'Adresse Mail', 'class' => 'box-input']])
+        ->add('username', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom d\' Utilisateur', 'class' => 'box-input']])
+        ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom', 'class' => 'box-input']])
+        ->add('email', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Adresse Mail', 'class' => 'box-input']])
 
         ->add('roles', ChoiceType::class, [
+            'label' => false, 
             'choices' => [
                 'Utilisateur' => 'ROLE_USER',
                 'Modérateur' => 'ROLE_MODO',
@@ -36,10 +37,10 @@ class RegistrationType extends AbstractType
             'type' => PasswordType::class,
             'invalid_message' => 'Les mots de passe ne sont pas identique.',
             'required' => true,
-            'first_options'  => ['attr' => ['label' => ' ', 'placeholder' => 'Mot de Passe', 'class' => 'box-input']],
-            'second_options' => ['attr' => ['label' => ' ', 'placeholder' => 'Confirmer Mot de Passe', 'class' => 'box-input']],
+            'first_options'  => ['label' => false, 'attr' => ['label' => ' ', 'placeholder' => 'Mot de Passe', 'class' => 'box-input']],
+            'second_options' => ['label' => false, 'attr' => ['label' => ' ', 'placeholder' => 'Confirmer Mot de Passe', 'class' => 'box-input']],
         ])
             
-        ->add('save', SubmitType::class, ['label' => 'Inscription', 'attr' => ['class' => 'add-button']]);
+        ->add('save', SubmitType::class, ['label' => 'Valider', 'attr' => ['class' => 'add-button']]);
     }
 }
