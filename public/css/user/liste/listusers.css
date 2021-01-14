@@ -1,0 +1,61 @@
+.box-liste {
+    border: 1px solid #c4c4c4;
+    border-radius: 2ch;
+    padding: 15px;
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    background-color: white;
+    box-shadow: 2px 2px 4px #beceff;
+}
+
+#titre {
+    font-size: 3ch;
+    text-shadow: 2px 2px 4px #beceff;
+    margin-bottom: 10px;
+}
+
+table {
+    table-layout: fixed;
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    border: 3px solid black;
+}
+
+th,
+td {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.modifBouton {
+    font-size: 15px;
+    text-align: center;
+    background: #FAB266;
+    border: 0;
+    border-radius: 5px;
+    padding: 3px;
+    margin: auto;
+    width: 100px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.supprBouton {
+    font-size: 15px;
+    text-align: center;
+    background: #FA6666;
+    border: 0;
+    border-radius: 5px;
+    padding: 3px;
+    margin: auto;
+    width: 100px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.bouton {
+    text-decoration: none;
+    color: #fff;
+}

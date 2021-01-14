@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\EditUserFormType;
+use App\Form\RegistrationType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,20 +40,26 @@ class AdminController extends AbstractController
     /**
      * @Route("utilisateur/modifier/{id}", name="modifier_utilisateur")
      */
-    public function editUser(User $user, Request $request){
-        $form = $this->createForm(EditUserFormType::class, $user);
+    public function editUser(User $user, Request $request)
+    {
+        $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+            $newUser = $form->getData();
+            $user->setEmail($newUser->getEmail())
+                ->setPassword($newUser->getPassword())
+                ->setRoles($newUser->getRoles())
+                ->setName($newUser->getName())
+                ->setUsername($newUser->getUsername());
             $entityManager->flush();
 
             $this->addFlash('message', 'Utilisateur modifié avec succès');
             return $this->redirectToRoute('admin_utilisateurs');
         }
 
-        return $this->render('admin/edituser.html.twig',[
+        return $this->render('admin/updateUser.html.twig',[
             'userForm' => $form->createView()
         ]);
     }
