@@ -22,18 +22,30 @@
 
                 <div class="content"><p>{{ article.content | raw}}</p></div>
 
-                <button id="myBtn">Open Modal</button>
-                <div id="myModal" class="modal">
+                <button id="myBtn{{article.id}}">Open Modal</button>
+                <div id="myModal{{article.id}}" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <p>Some text in the Modal..</p>
                 </div>
                 </div>
 
+                <article id="articles" data-id="{{article.id}}"></article>
+
+            </div>
+        
+        {% endfor %}
+
+        <div class="pagination"> {{ knp_pagination_render(articles) }}  </div>
+
+    </section>
+{% endblock %}
+
                 {% block javascripts %}
                     <script type="text/javascript">
-                        var modal = document.getElementById("myModal");
-                        var btn = document.getElementById("myBtn");
+                        const article = document.querySelector('#articles');
+                        var modal = document.getElementById("myModal" + article.dataset.id);
+                        var btn = document.getElementById("myBtn" + article.dataset.id);
                         var span = document.getElementsByClassName("close")[0];
                         btn.onclick = function() {
                             modal.style.display = "block";
@@ -48,12 +60,3 @@
                         } 
                     </script>
                 {% endblock %}
-
-            </div>
-        
-        {% endfor %}
-
-        <div class="pagination"> {{ knp_pagination_render(articles) }}  </div>
-
-    </section>
-{% endblock %}
