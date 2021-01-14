@@ -1,17 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1> Connexion </h1>
+{% block title %}Connexion{% endblock %}
 
-    <form action="{{ path('security_login') }}" method="post">
-        <div class="">
-        <input placeholder = "Nom d'Utilisateur" required name="_username" type="text" class="">
-        </div>
-        <div class="">
-        <input placeholder = "Mot de Passe" required name="_password" type="password" class="">
-        </div>
-        <div class="">
-        <button type="submit">Connexion</button>
-        </div>
-    </form>
+{% block body %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/user/connexion/connexion.css')}}">
+{% endblock %}
+
+    <div class="box-connexion">
+
+        <h1 id="titre"> Connexion </h1>
+
+        <form action="{{ path('security_login') }}" method="post">
+            
+            <input placeholder="Nom d'Utilisateur" required name="_username" type="text" value="{{ last_username }}" class="box-input">
+          
+            <input placeholder="Mot de Passe" required name="_password" type="password" class="box-input">
+
+            <button type="submit" class="add-button">Connexion</button>
+
+        </form>   
+
+    </div>
+
 {% endblock %}

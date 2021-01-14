@@ -36,18 +36,15 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=40)
-     * @Assert\Length(min="8", minMessage = "Votre mot de passe doit faire minimum 8 caractères")
-     * @Assert\EqualTo(propertyPath="confirm_password", message="Les mots de passe ne sont pas identique")
-     */
+     * @ORM\Column(type="string", length=200)
+     * @Assert\Length(min="8", minMessage = "Votre mot de passe doit faire minimum 8 caractères")*/
     private $password;
 
-    public $confirm_password;
     
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="simple_array")
      */
-    private $roles;
+    private $roles = [];
 
     /**
      * @ORM\Column(type="string", length=40)
@@ -98,22 +95,17 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRoles(): ?array
     {
-        return $this->roles;
+        $roles = $this->roles;
+        return array_unique($roles);
     }
 
-    public function setRoles(string $roles): self
-        {
-            if ((trim($roles) == null) or (trim($roles) == ''))
-            {
-                throw new Exception("Le mot de passe saisi est vide");
-            } else {
-                $this->roles = trim($roles);
-            }
-    
-            return $this;
-        }
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
 
     public function getName(): ?string
     {

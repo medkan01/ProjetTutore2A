@@ -17,8 +17,8 @@
                 <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
 
                 {% if article.updatedAt != NULL %}
-                    <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
-                {% endif %}
+                    <div class="date">et Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
+                {% endif %} <br>
 
                 <div class="content"><p>{{ article.content | raw}}</p></div>
                     <img class="miniatureliste" src="{{ article.srcImage }}"/>
@@ -76,6 +76,7 @@
 
                     </script>
                 {% endblock %}
+
 
 
 

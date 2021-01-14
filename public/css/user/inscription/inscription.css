@@ -1,0 +1,57 @@
+.box-inscription {
+    border: 1px solid #c4c4c4;
+    border-radius: 2ch;
+    padding: 15px;
+    margin: auto;
+    margin-top: 100px;
+    width: 30%;
+    background-color: white;
+    box-shadow: 2px 2px 4px #beceff;
+}
+
+#titre {
+    font-size: 3ch;
+    text-shadow: 2px 2px 4px #beceff;
+}
+
+.box-input {
+    font-size: 16px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin: auto;
+    margin-top: 15px;
+    width: 70%;
+    height: 30px;
+}
+
+.box-input:focus .box-text-area:focus {
+    outline: none;
+    border-color: #5c7186;
+}
+
+.add-button {
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    background: #FA6666;
+    border: 0;
+    border-radius: 5px;
+    padding: 0;
+    margin: auto;
+    margin-top: 20px;
+    width: 40%;
+    height: 30px;
+    cursor: pointer;
+    outline: 0;
+}
+
+
+#registration_roles{
+    margin-top:15px;
+}
+
+#registration_roles input{
+    margin: 5px;
+}
