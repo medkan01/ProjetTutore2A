@@ -8,9 +8,9 @@
     {{ form_row(form.name, {'label' : ' ','attr': {'placeholder' : 'Nom'}}) }}
     {{ form_row(form.email, {'label' : ' ','attr': {'placeholder' : 'Adresse Mail'}}) }}
     {{ form_row(form.roles, {'label' : ' '}) }}
-    {{ form_row(form.password, {'label' : ' ','attr': {'placeholder' : 'Mot de Passe'}})  }}
-    {{ form_row(form.confirm_password, {'label' : ' ','attr': {'placeholder' : 'Confirmer Mot de Passe'}})  }}
-
+    {{ form_row(form.password.first, {'attr': {'placeholder': 'Mot de Passe'}}) }}
+    {{ form_row(form.password.second, { 'attr': { 'placeholder': 'Confirmer le Mot de Passe'} }) }}
+ 
     <button type="submit" class="">Inscription</button>
     {{ form_end(form) }}
 {% endblock %}
