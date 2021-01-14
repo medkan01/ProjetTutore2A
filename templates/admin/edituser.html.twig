@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier l'Utilisateur{% endblock %}
+{% block title %}Modification Utilisateur{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/article/liste/nosArticles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user/modif/modifuser.css') }}">
 {% endblock %}
 
 {% block body %}
-    <section>
 
-        <video autoplay loop poster="video.jpg" id="videofond">
-            <source src="images/video.mp4" type="video/mp4">
-        </video>
+    <div class="box-modification">
 
-        <h1 id="titre">Modifier l'Utilisateur</h1> <br>
+        <h1 id="titre">Modification Utilisateur</h1>
+
         {{ form(userForm) }}
-    </section>
+
+    </div>
+    
 {% endblock %}
+
+

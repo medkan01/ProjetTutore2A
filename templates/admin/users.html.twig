@@ -3,26 +3,22 @@
 {% block title %}Les différents Utilisateurs{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/article/liste/nosArticles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user/liste/listusers.css') }}">
 {% endblock %}
 
 {% block body %}
-    <section>
-
-        <video autoplay loop poster="video.jpg" id="videofond">
-            <source src="images/video.mp4" type="video/mp4">
-        </video>
+    <section class="box-liste">
 
         <h1 id="titre">Voici les Différents Utilisateurs de notre Site</h1> <br>
 
         <table>
             <thead>
-                <th>ID</th>
+                <th id="id">ID</th>
                 <th>Email</th>
                 <th>Rôles</th>
                 <th>Nom</th>
                 <th>Username</th>
-                <th>Actions</th>
+                <th colspan="2">Actions</th>
             </thead>
             <tbody>
                 {% for user in users %}
@@ -42,8 +38,10 @@
                         </td>
                         <td>{{ user.name }}</td>
                         <td>{{ user.username }}</td>
-                        <td><a href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a></td>
-                        <td><a href="{{ path('admin_delete_user', {'id': user.id}) }}">Supprimer</a></td>
+                        <td colspan="2">
+                            <div class="modifBouton"><a class="bouton" href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a></div>
+                            <div class="supprBouton"><a class="bouton" href="{{ path('admin_delete_user', {'id': user.id}) }}">Supprimer</a>
+                        </td>
                     </tr>
                 {% else %}
                     <tr>

@@ -18,7 +18,7 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username', TextType::class, ['attr' => ['placeholder' => 'Nom d\'Utilisateur', 'class' => 'box-input', 'label' => ' ']])
+        ->add('username', TextType::class, ['attr' => ['placeholder' => 'Nom d\' Utilisateur', 'class' => 'box-input', 'label' => ' ']])
         ->add('name', TextType::class, ['attr' => ['placeholder' => 'Nom', 'class' => 'box-input']])
         ->add('email', TextType::class, ['attr' => ['placeholder' => 'Adresse Mail', 'class' => 'box-input']])
 
@@ -35,10 +35,9 @@ class RegistrationType extends AbstractType
         ->add('password', RepeatedType::class, [
             'type' => PasswordType::class,
             'invalid_message' => 'Les mots de passe ne sont pas identique.',
-            'options' => ['attr' => ['placeholder' => 'Mot de Passe', 'class' => 'box-input']],
             'required' => true,
-            'first_options'  => ['label' => ' '],
-            'second_options' => ['label' => ' '],
+            'first_options'  => ['attr' => ['label' => ' ', 'placeholder' => 'Mot de Passe', 'class' => 'box-input']],
+            'second_options' => ['attr' => ['label' => ' ', 'placeholder' => 'Confirmer Mot de Passe', 'class' => 'box-input']],
         ])
             
         ->add('save', SubmitType::class, ['label' => 'Inscription', 'attr' => ['class' => 'add-button']]);
