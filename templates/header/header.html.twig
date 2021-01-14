@@ -8,7 +8,7 @@
 
 				<nav>
 					{% if is_granted('ROLE_ADMIN') %}
-						<a href="{{ path('security_login') }}" class="hvr-underline"> Inscription </a>
+						<a href="{{ path('security_registration') }}" class="hvr-underline"> Inscription </a>
 						<a href="{{ path('admin_utilisateurs') }}" class="hvr-underline"> Utilisateurs </a>
 					{% endif %}
 					<a href="{{ path('articles') }}" class="hvr-underline"> Articles </a>
