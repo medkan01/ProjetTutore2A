@@ -15,7 +15,7 @@ class UserFixture extends Fixture
             $user = new User();
             $user->setUsername("User_".$i);
             $user->setName("Name ".$i);
-            $user->setPassword("Password");
+            $user->setPassword("$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a");//rasmuslerdorf
             $user->setEmail("user@email.com");
             $user->setRoles(['ROLE_USER']);
             $manager->persist($user);
@@ -25,7 +25,7 @@ class UserFixture extends Fixture
             $user = new User();
             $user->setUsername("Modo_".$i);
             $user->setName("Modo ".$i);
-            $user->setPassword("Modo123");
+            $user->setPassword("$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a");//rasmuslerdorf
             $user->setEmail("Modo@email.com");
             $user->setRoles(['ROLE_MODO']);
             $manager->persist($user);
@@ -34,7 +34,7 @@ class UserFixture extends Fixture
             $user = new User();
             $user->setUsername("User_".$i);
             $user->setName("Name ".$i);
-            $user->setPassword("Admin123");
+            $user->setPassword("$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a");//rasmuslerdorf
             $user->setEmail("user@email.com");
             $user->setRoles(['ROLE_ADMIN']);
             $manager->persist($user);
