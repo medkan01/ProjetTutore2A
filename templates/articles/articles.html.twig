@@ -21,7 +21,7 @@
                     <div class="date">et Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
                 {% endif %} <br>
 
-                <button onclick="testmodal({{article.id}})" class="btnarticle" id="my-btn-{{article.id}}">Open Modal</button>
+                <button onclick="testmodal({{article.id}})" class="btnarticle" id="my-btn-{{article.id}}">Consulter</button>
                 <div id="my-modal-{{article.id}}" class="modal">
                 <div class="modal-content">
                     <span onclick="fermermodal({{article.id}})" class="close">&times;</span>
