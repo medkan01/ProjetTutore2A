@@ -8,9 +8,11 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/admin", name="admin_")
      */
 
@@ -53,5 +55,18 @@ class AdminController extends AbstractController
         return $this->render('admin/edituser.html.twig',[
             'userForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("utilisateur//deleteuser/{id}", name="delete_user")
+     */
+    public function deleteUser(User $user): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return new Response('Utilisateur supprimé avec succés !');
     }
 }

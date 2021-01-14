@@ -42,8 +42,8 @@
                         </td>
                         <td>{{ user.name }}</td>
                         <td>{{ user.username }}</td>
-                        <td><a href="{{ path('admin_modifier_utilisateur',{'id': user.id}) }}">Modifier</a></td>
-                        <td><a href="">Supprimer</a></td>
+                        <td><a href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a></td>
+                        <td><a href="{{ path('admin_delete_user', {'id': user.id}) }}">Supprimer</a></td>
                     </tr>
                 {% else %}
                     <tr>

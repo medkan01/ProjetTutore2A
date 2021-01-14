@@ -2,44 +2,33 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    public function createUser(User $user): Response
+    public function createUser(User $user, Request $request): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return new Response('Nouvel utilisateur créé avec l\'id: '.$user->getId());
-    }
-
-    public function deleteUser(User $user): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $entityManager->remove($user);
-        $entityManager->flush();
-
-        return new Response('Utilisateur supprimé avec succés !');
-    }
-
-    public function updateUser(int $id, User $newUser): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository(User::class)->find($id);
-
-        $user->setEmail($newUser->getEmail());
-        $user->setPassword($newUser->getPassword());
-        $user->setRoles($newUser->getRoles());
-        $user->setName($newUser->getName());
-        $user->setUsername($newUser->getUsername());
-        $entityManager->flush();
-
-        return new Response('Utilisateur modifié avec succés !');
+        if($user->confirm_password == $user->getPassword()){
+            $form = $this->createForm(EditUserFormType::class, $user);
+            $form->handleRequest($request);
+    
+            if($form->isSubmitted() && $form->isValid()){
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+    
+                $this->addFlash('message', 'Utilisateur modifié avec succès');
+                return $this->redirectToRoute('admin_utilisateurs');
+            }
+    
+            return $this->render('admin/edituser.html.twig',[
+                'userForm' => $form->createView()
+            ]);
+        }else{
+            return new Response('Les mots de passe ne sont pas identique.');
+        }
     }
 }

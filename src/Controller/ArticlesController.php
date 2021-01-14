@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticlesController extends AbstractController
 {
     /**
-     *  @IsGranted("ROLE_MODO")
+     * @IsGranted("ROLE_MODO")
      * @Route("/articles", name="articles")
      */
     
