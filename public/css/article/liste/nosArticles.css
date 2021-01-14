@@ -170,6 +170,10 @@
     text-align: right;
 }
 
+.miniaturemodal {
+    padding-bottom: 30px;
+}
+
 .modal-footer {
     font-size: 14px;
     color: white;
