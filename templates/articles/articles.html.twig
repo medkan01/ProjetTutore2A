@@ -20,19 +20,20 @@
                     <div class="date">et Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
                 {% endif %} <br>
 
-                <button onclick="testmodal({{article.id}})" class="btnarticle" id="my-btn-{{article.id}}">Consulter</button>
+                <div class="content"><p>{{ article.content | raw}}</p></div>
+                    <img class="miniatureliste" src="{{ article.srcImage }}"/>
+
+                <button onclick="testmodal({{article.id}})" class="btnarticle" id="my-btn-{{article.id}}">Open Modal</button>
                 <div id="my-modal-{{article.id}}" class="modal">
                 <div class="modal-content">
                     <span onclick="fermermodal({{article.id}})" class="close">&times;</span>
-                    <div class="modal-header"> {{article.title}} </div>
-                    <div class="modal-body"> {{ article.content | raw }} </div>
-                    <div class="bas">
-                        <div class="modal-footer"> Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} </div>
-                        {% if article.updatedAt != NULL %}
-                            <div class="modal-footer"> et Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
-                         {% endif %}
-                    </div>
-
+                    <h2>{{article.title}}</h2>
+                    <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
+                    {% if article.updatedAt != NULL %}
+                    <div class="date">Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
+                    {% endif %}
+                    <div class="content"><p>{{ article.content | raw}}</p></div>
+                    <img class ="miniaturemodal" src="{{ article.srcImage }}"/>
                 </div>
                 </div>
 
