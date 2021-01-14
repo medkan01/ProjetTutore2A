@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Inscription{% endblock %}
+
 {% block body %}
-    <h1>Inscription</h1>
-    {% for message in app.flashes('success') %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/user/inscription/inscription.css')}}">
+{% endblock %}
+
+    <div class="box-inscription">
+
+        <h1 id="titre"> Inscription </h1>
+    
+        {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
-    {% endfor %}
-    {{ form_start(form) }}
-    {{ form_row(form.username, {'label' : ' ','attr': {'placeholder' : 'Nom d\'Utilisateur'}}) }}
-    {{ form_row(form.name, {'label' : ' ','attr': {'placeholder' : 'Nom'}}) }}
-    {{ form_row(form.email, {'label' : ' ','attr': {'placeholder' : 'Adresse Mail'}}) }}
-    {{ form_row(form.roles, {'label' : ' '}) }}
-    {{ form_row(form.password.first, {'attr': {'placeholder': 'Mot de Passe'}}) }}
-    {{ form_row(form.password.second, { 'attr': { 'placeholder': 'Confirmer le Mot de Passe'} }) }}
- 
-    <button type="submit" class="">Inscription</button>
-    {{ form_end(form) }}
+        {% endfor %}
+
+        {{ form(form) }}
+
+    </div>
+
 {% endblock %}
