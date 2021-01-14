@@ -7,6 +7,10 @@
 				</div>
 
 				<nav>
+					{% if is_granted('ROLE_ADMIN') %}
+						<a href="{{ path('security_login') }}" class="hvr-underline"> Inscription </a>
+						<a href="{{ path('admin_utilisateurs') }}" class="hvr-underline"> Utilisateurs </a>
+					{% endif %}
 					<a href="{{ path('articles') }}" class="hvr-underline"> Articles </a>
 					<a href="{{ path('insert') }}" class="hvr-underline"> Créer </a>
 					<a href="{{ path('liste_articles') }}" class="hvr-underline"> Gérer </a>
@@ -15,6 +19,7 @@
 					{% else %}
 						<a href="{{ path('security_logout') }}" class="hvr-underline"> Déconnexion </a>
 					{% endif %}
+					
 				</nav>
 			</div>
 		</header>

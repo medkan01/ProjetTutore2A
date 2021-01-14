@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Inscription</h1>
-
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+    {% endfor %}
     {{ form_start(form) }}
     {{ form_row(form.username, {'label' : ' ','attr': {'placeholder' : 'Nom d\'Utilisateur'}}) }}
     {{ form_row(form.name, {'label' : ' ','attr': {'placeholder' : 'Nom'}}) }}

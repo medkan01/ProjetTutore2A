@@ -36,6 +36,7 @@ class AdminController extends AbstractController
             'users'=> $users->findAll()
         ]);
     }
+
     /**
      * @Route("utilisateur/modifier/{id}", name="modifier_utilisateur")
      */
