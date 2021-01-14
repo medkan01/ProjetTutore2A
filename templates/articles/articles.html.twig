@@ -19,7 +19,7 @@
                 {% if article.updatedAt != NULL %}
                     <div class="date">et Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
                 {% endif %} <br>
-
+                    <img class="miniatureliste" src="{{ article.srcImage }}"/>
                 <button onclick="testmodal({{article.id}})" class="btnarticle" id="my-btn-{{article.id}}">Open Modal</button>
                 <div id="my-modal-{{article.id}}" class="modal">
                 <div class="modal-content">
