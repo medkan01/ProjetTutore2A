@@ -13,19 +13,20 @@
         {% for article in articles %}
             
             <div class="box">
+                                <img class="miniatureliste" src="{{ article.srcImage }}"/>
                 <div class="titreArticle"><h2>{{article.title}}</h2></div>
                 <div class="date">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}</div>
 
                 {% if article.updatedAt != NULL %}
                     <div class="date">et Modifié le {{ article.updatedAt | date('d/m/Y') }} à {{ article.updatedAt | date('H:i') }}</div>
                 {% endif %} <br>
-                    <img class="miniatureliste" src="{{ article.srcImage }}"/>
-                <button onclick="testmodal({{article.id}})" class="btnarticle" id="my-btn-{{article.id}}">Open Modal</button>
+
+                <button onclick="testmodal({{article.id}})" class="btnarticle" id="my-btn-{{article.id}}">Consulter</button>
                 <div id="my-modal-{{article.id}}" class="modal">
                 <div class="modal-content">
                     <span onclick="fermermodal({{article.id}})" class="close">&times;</span>
                     <h1 class="modal-header">{{article.title}}</h2>
-                    <div class="modal-body"><p>{{ article.content | raw}}</p></div>
+                    <div class="modal-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nibh quis turpis tincidunt blandit. Integer sollicitudin risus sed arcu aliquet, vel blandit tellus pretium. Donec rutrum auctor sapien, at bibendum felis fermentum sed. Nunc pretium varius rhoncus. Aenean fringilla, nibh eu interdum consequat, nibh erat porta justo, at aliquam magna ante vel lectus. In vulputate molestie nisl, non elementum lacus. Vivamus metus quam, volutpat ac commodo eu, consectetur nec arcu. Vivamus posuere sem ac posuere luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nibh quis turpis tincidunt blandit. Integer sollicitudin risus sed arcu aliquet, vel blandit tellus pretium. Donec rutrum auctor sapien, at bibendum felis fermentum sed. Nunc pretium varius rhoncus. Aenean fringilla, nibh eu interdum consequat, nibh erat porta justo, at aliquam magna ante vel lectus. In vulputate molestie nisl, non elementum lacus. Vivamus metus quam, volutpat ac commodo eu, consectetur nec arcu. Vivamus posuere sem ac posuere luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nibh quis turpis tincidunt blandit. Integer sollicitudin risus sed arcu aliquet, vel blandit tellus pretium. Donec rutrum auctor sapien, at bibendum felis fermentum sed. Nunc pretium varius rhoncus. Aenean fringilla, nibh eu interdum consequat, nibh erat porta justo, at aliquam magna ante vel lectus. In vulputate molestie nisl, non elementum lacus. Vivamus metus quam, volutpat ac commodo eu, consectetur nec arcu. Vivamus posuere sem ac posuere luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nibh quis turpis tincidunt blandit. Integer sollicitudin risus sed arcu aliquet, vel blandit tellus pretium. Donec rutrum auctor sapien, at bibendum felis fermentum sed. Nunc pretium varius rhoncus. Aenean fringilla, nibh eu interdum consequat, nibh erat porta justo, at aliquam magna ante vel lectus. In vulputate molestie nisl, non elementum lacus. Vivamus metus quam, volutpat ac commodo eu, consectetur nec arcu. Vivamus posuere sem ac posuere luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nibh quis turpis tincidunt blandit. Integer sollicitudin risus sed arcu aliquet, vel blandit tellus pretium. Donec rutrum auctor sapien, at bibendum felis fermentum sed. Nunc pretium varius rhoncus. Aenean fringilla, nibh eu interdum consequat, nibh erat porta justo, at aliquam magna ante vel lectus. In vulputate molestie nisl, non elementum lacus. Vivamus metus quam, volutpat ac commodo eu, consectetur nec arcu. Vivamus posuere sem ac posuere luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
                     <img class ="miniaturemodal" src="{{ article.srcImage }}"/>
 
                     <div class="bas">
